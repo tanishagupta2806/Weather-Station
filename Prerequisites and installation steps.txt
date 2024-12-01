@@ -1,5 +1,4 @@
-Group-4
-Tuesday batch
+
 1. Initialization and Setup
 WiFi Setup:
 Connects the ESP32 to a WiFi network. The credentials are provided in the ssid and pass variables.
