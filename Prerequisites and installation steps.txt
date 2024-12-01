@@ -1,0 +1,174 @@
+Group-4
+Tuesday batch
+1. Initialization and Setup
+WiFi Setup:
+Connects the ESP32 to a WiFi network. The credentials are provided in the ssid and pass variables.
+Sensors Initialization:
+Initializes all connected sensors (DHT22 for humidity and temperature, BMP280 for pressure and altitude, ML8511 for UV intensity, and the rain and wind sensors).
+Prerequisites
+Before running the project, ensure the following:
+
+Hardware Components:
+
+ESP32 microcontroller
+DHT22 sensor (for humidity and temperature)
+BMP280 sensor (for pressure and temperature)
+ML8511 sensor (for UV intensity)
+Rain sensor module
+Anemometer (for wind speed)
+Connecting wires and breadboard/power supply
+Software Requirements:
+
+Arduino IDE (latest version)
+ThingSpeak account (for data visualization)
+Installed drivers for ESP32 board
+Libraries:
+
+WiFi.h
+HTTPClient.h
+ThingSpeak.h
+Adafruit_BMP280.h
+DHT.h
+
+
+////Installation Steps
+Follow these steps to set up and run the project:
+
+1. Install Arduino IDE
+Download the Arduino IDE from https://www.arduino.cc/en/software.
+Install the IDE based on your operating system.
+
+2. Set Up the ESP32 Board
+Open Arduino IDE and go to File > Preferences.
+Add the following URL to the "Additional Boards Manager URLs" field:
+arduino
+Copy code
+https://dl.espressif.com/dl/package_esp32_index.json
+Go to Tools > Board > Boards Manager and search for ESP32.
+Install the ESP32 package.
+
+3. Install Required Libraries
+Open Arduino IDE and go to Sketch > Include Library > Manage Libraries.
+Search and install the following libraries:
+DHT sensor library by Adafruit
+Adafruit BMP280 Library
+ThingSpeak
+Ensure WiFi.h and HTTPClient.h are included (default libraries with ESP32).
+
+4. Connect Hardware
+Refer to the Hardware Connections section in this README to wire up all the sensors to the ESP32.
+
+5. Configure the Code
+Open the WeatherStation.ino file in the Arduino IDE.
+Update the following parameters in the code:
+WiFi Credentials:
+cpp
+Copy code
+const char *ssid = "Your WiFi SSID";
+const char *pass = "Your WiFi Password";
+ThingSpeak Credentials:
+cpp
+Copy code
+#define Channel_ID <Your Channel ID>
+#define API_Key "<Your ThingSpeak API Key>"
+
+6. Upload the Code
+Connect your ESP32 to your computer via USB.
+Select the correct board and port:
+Board: ESP32 Dev Module
+Port: Check under Tools > Port.
+Click the Upload button in the Arduino IDE.
+
+7. Monitor Serial Output
+Open the Serial Monitor (Ctrl + Shift + M or Tools > Serial Monitor).
+Set the baud rate to 115200 to view the sensor readings and WiFi connection status.
+How the System Works
+WiFi Connection:
+The ESP32 connects to a WiFi network using credentials defined in the ssid and pass variables.
+
+Sensor Data Reading:
+Sensors are periodically read in the loop() function, and the following data is collected:
+
+Temperature, Pressure, Humidity
+UV Intensity, Rainfall, Wind Speed
+Data Processing:
+Raw values from sensors are processed into meaningful measurements, such as UV intensity or rainfall in mm.
+
+Data Upload:
+Sensor readings are uploaded to ThingSpeak cloud service for visualization and analysis.
+
+Dependencies
+Libraries:
+WiFi.h
+HTTPClient.h
+ThingSpeak.h
+Adafruit_BMP280.h
+DHT.h
+Install all dependencies using the Arduino IDE Library Manager.
+
+1. Install WiFi.h Library
+This library comes pre-installed with the ESP32 board package.
+
+Steps:
+
+Open the Arduino IDE.
+Ensure you’ve installed the ESP32 board package:
+Go to File > Preferences.
+Add the following URL to the "Additional Board Manager URLs" field:
+arduino
+Copy code
+https://dl.espressif.com/dl/package_esp32_index.json
+Go to Tools > Board > Boards Manager, search for ESP32, and click Install.
+The WiFi.h library will be automatically included when you select an ESP32 board.
+
+2. Install HTTPClient.h Library
+Like WiFi.h, this library is included with the ESP32 board package.
+
+Steps:
+
+Ensure the ESP32 board package is installed as described above.
+The HTTPClient.h library is included by default with ESP32 support.
+
+
+3. Install ThingSpeak.h Library
+This library allows interaction with the ThingSpeak platform.
+
+Steps:
+
+Open Arduino IDE.
+Go to Sketch > Include Library > Manage Libraries.
+In the search bar, type ThingSpeak.
+Locate the library developed by MathWorks.
+Click Install.
+
+
+4. Install Adafruit_BMP280.h Library
+This library enables communication with the BMP280 pressure and temperature sensor.
+
+Steps:
+
+Open Arduino IDE.
+Go to Sketch > Include Library > Manage Libraries.
+In the search bar, type Adafruit BMP280.
+Locate the library by Adafruit.
+Click Install.
+
+
+5. Install DHT.h Library
+This library is used for reading data from the DHT22 sensor.
+
+Steps:
+
+Open Arduino IDE.
+Go to Sketch > Include Library > Manage Libraries.
+In the search bar, type DHT sensor library.
+Locate the library by Adafruit.
+Click Install.
+
+Verification
+After installing these libraries:
+
+Open the Arduino IDE.
+Go to Sketch > Include Library.
+Check the dropdown menu to confirm that the installed libraries appear in the list.
+
